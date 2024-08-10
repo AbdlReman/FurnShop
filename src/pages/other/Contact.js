@@ -1,9 +1,9 @@
-import { Fragment } from "react"; 
+import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import GoogleMap from "../../components/google-map"
+import GoogleMap from "../../components/google-map";
 
 const Contact = () => {
   let { pathname } = useLocation();
@@ -16,11 +16,11 @@ const Contact = () => {
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb 
+        <Breadcrumb
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
-            {label: "Contact", path: process.env.PUBLIC_URL + pathname }
-          ]} 
+            { label: "Home", path: process.env.PUBLIC_URL + "/" },
+            { label: "Contact", path: process.env.PUBLIC_URL + pathname },
+          ]}
         />
         <div className="contact-area pt-100 pb-100">
           <div className="container">
@@ -35,8 +35,8 @@ const Contact = () => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>+012 345 678 102</p>
-                      <p>+012 345 678 102</p>
+                      <p>+92 302 005 8237</p>
+                      <p>+92 318 506 7794</p>
                     </div>
                   </div>
                   <div className="single-contact-info">

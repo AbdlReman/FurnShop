@@ -39,6 +39,7 @@ const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
 
+    // Create order summary as a string to avoid nested structure issues
     const orderSummary = cartItems.map((item) => ({
       productName: item.name,
       quantity: item.quantity,
@@ -46,22 +47,40 @@ const Checkout = () => {
     }));
 
     const total = orderSummary
-      .reduce((sum, item) => sum + item.price * item.quantity, 0)
+      .reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0)
       .toFixed(2);
+
+    // Log the data to be sent for debugging
+    console.log("FormData:", {
+      ...formData,
+      orderSummary: JSON.stringify(orderSummary), // Convert array to JSON string
+      total,
+    });
 
     try {
       const result = await emailjs.send(
-        "service_1t5hkid", // Your service ID
-        "template_bkfh1sh", // Your template ID
+        process.env.REACT_APP_EMAILJS_SERVICE_ID, // Your service ID
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // Your template ID
         {
-          ...formData,
-          orderSummary,
-          total,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          companyName: formData.companyName,
+          country: formData.country,
+          streetAddress: formData.streetAddress,
+          streetAddress2: formData.streetAddress2,
+          city: formData.city,
+          state: formData.state,
+          postcode: formData.postcode,
+          phone: formData.phone,
+          email: formData.email,
+          orderNotes: formData.orderNotes,
+          orderSummary: JSON.stringify(orderSummary), // Convert array to JSON string
+          total: total,
         },
-        "lg9uPFhyIA07lWgR4" // Your user ID
+        process.env.REACT_APP_EMAILJS_USER_ID // Your user ID
       );
       console.log("Email sent successfully:", result);
-      alert("Order summary sent successfully!");
+      alert("Order sent successfully!");
     } catch (error) {
       console.error("Error sending email:", error);
       alert("Failed to send order summary");
@@ -85,8 +104,8 @@ const Checkout = () => {
         <div className="checkout-area pt-95 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
-              <div className="row">
-                <form onSubmit={handleSubmit}>
+             
+                <form onSubmit={handleSubmit}> <div className="row">
                   <div className="col-lg-7">
                     <div className="billing-info-wrap">
                       <h3>Billing Details</h3>
@@ -310,9 +329,9 @@ const Checkout = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </div></div>
                 </form>
-              </div>
+              
             ) : (
               <div className="row">
                 <div className="col-lg-12">

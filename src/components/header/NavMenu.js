@@ -53,16 +53,16 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
                   {t("compare")}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to={process.env.PUBLIC_URL + "/my-account"}>
                   {t("my_account")}
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link to={process.env.PUBLIC_URL + "/login-register"}>
                   {t("login_register")}
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to={process.env.PUBLIC_URL + "/about"}>
                   {t("about_us")}
@@ -80,7 +80,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
               </li>
             </ul>
           </li>
-          <li>
+          {/* <li>
             <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
               {t("blog")}
               {sidebarMenu ? (
@@ -113,7 +113,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li>
             <Link to={process.env.PUBLIC_URL + "/contact"}>
               {t("contact_us")}

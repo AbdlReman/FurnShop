@@ -30,7 +30,7 @@ const HomeFurniture = () => {
           spaceTopClass="pt-115"
           spaceBottomClass="pb-115"
           bgImg="/assets/img/bg/bg-1.jpg"
-          dateTime="November 13, 2023 12:12:00"
+          dateTime="Augest 10, 2024 12:12:00"
         />
 
         {/* feature icon */}
